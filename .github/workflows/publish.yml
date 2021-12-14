@@ -49,8 +49,8 @@ jobs:
         uses: jiminj/actions-gh-pages@v3.8.1-0
         with:
           allow_empty_commit: true
-          #deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          #github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/html
           #destination_dir: ${{ steps.extract_ref.outputs.ref }}
 
