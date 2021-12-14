@@ -1,0 +1,57 @@
+name: doxygen
+on:
+  push:
+    branches: [ master ]
+    tags: ["v*"]
+  pull_request:
+    branches: [ master ]
+    tags: ["v*"]
+
+jobs:
+  build:
+    runs-on: [self-hosted, airspeech-client-c++]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name : Extract ref name
+        run: echo "##[set-output name=ref;]$(echo ${GITHUB_REF##*/})"
+        id: extract_ref
+
+      - name: Set current date as env variable
+        run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+
+      - name : Gen dummy page
+        run: |
+          mkdir -p docs/html
+          cat > docs/html/index.html <<EOL
+          <!doctype html>
+          <html>
+            <head>
+              <title>GitHub Pages deployed!</title>
+            </head>
+            <body>
+              <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/github-pages">GitHub Pages action</a> successfully.</p>
+              <p>${{ NOW }}</p>
+            </body>
+          </html>
+          EOL
+      -
+
+      #- name: Create Documents
+        #run: doxygen doxygen/Doxyfile
+
+      ## This step is required because ssh-agent process spawned from Deploy step never finish
+      #- name: Cleanup ssh-agent
+        #run: pkill ssh-agent
+
+      - name: Deploy to internal git pages
+        # Forked version of peaceiris/actions-gh-pages, which fixes the GHES issue
+        uses: jiminj/actions-gh-pages@v3.8.1-0
+        with:
+          allow_empty_commit: true
+          #deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html
+          destination_dir: ${{ steps.extract_ref.outputs.ref }}
+
