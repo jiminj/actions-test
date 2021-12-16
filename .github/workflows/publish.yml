@@ -46,11 +46,11 @@ jobs:
 
       - name: Deploy to internal git pages
         # Forked version of peaceiris/actions-gh-pages, which fixes the GHES issue
-        uses: jiminj/actions-gh-pages@v3.8.1-4
+        uses: jiminj/actions-gh-pages@v3.8.1-5
         with:
           allow_empty_commit: true
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          external_repository: https://github.com/jiminj/actions-test-external
+          external_repository: github.com/jiminj/actions-test-external
           #github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/html
           #destination_dir: ${{ steps.extract_ref.outputs.ref }}
