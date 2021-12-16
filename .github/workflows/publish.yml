@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to internal git pages
         # Forked version of peaceiris/actions-gh-pages, which fixes the GHES issue
-        uses: jiminj/actions-gh-pages@v3.8.1-2
+        uses: jiminj/actions-gh-pages@v3.8.1-3
         with:
           allow_empty_commit: true
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
