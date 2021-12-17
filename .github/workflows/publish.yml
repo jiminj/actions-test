@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to external git pages
         # Forked version of peaceiris/actions-gh-pages, which fixes the GHES issue
-        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
+        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -65,7 +65,7 @@ jobs:
           rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with host address
-        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
+        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -83,7 +83,7 @@ jobs:
           rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with ssh proxy
-        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
+        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -102,7 +102,7 @@ jobs:
           rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with https host address
-        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
+        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -112,7 +112,7 @@ jobs:
           destination_dir: deploykey-withhttpshost
 
       - name: Deploy to external git pages - with personal_token
-        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
+        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -122,7 +122,7 @@ jobs:
           destination_dir: deploykey-pat
 
       - name: Deploy to external git pages - with personal_token
-        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
+        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
         continue-on-error: true
         with:
           allow_empty_commit: true
