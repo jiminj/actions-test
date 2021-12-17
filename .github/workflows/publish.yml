@@ -56,14 +56,6 @@ jobs:
           publish_dir: ./docs
           destination_dir: deploykey
 
-      - name: Cleanup ssh-agent
-        continue-on-error: true
-        run: |
-          pkill -f 'ssh-agent -a /tmp/ssh-auth.sock'
-          rm '/home/actions-runner/.ssh/github'
-          rm '/home/actions-runner/.ssh/config'
-          rm '/home/actions-runner/.ssh/known_hosts'
-
       - name: Deploy to external git pages - with host address
         uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
         continue-on-error: true
@@ -74,14 +66,6 @@ jobs:
           publish_dir: ./docs
           destination_dir: deploykey-withhost
 
-      - name: Cleanup ssh-agent
-        continue-on-error: true
-        run: |
-          pkill -f 'ssh-agent -a /tmp/ssh-auth.sock'
-          rm '/home/actions-runner/.ssh/github'
-          rm '/home/actions-runner/.ssh/config'
-          rm '/home/actions-runner/.ssh/known_hosts'
-
       - name: Deploy to external git pages - with personal_token
         uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
         continue-on-error: true
@@ -91,14 +75,6 @@ jobs:
           external_repository: jiminj/actions-test-external
           publish_dir: ./docs
           destination_dir: deploykey-pat
-
-      - name: Cleanup ssh-agent
-        continue-on-error: true
-        run: |
-          pkill -f 'ssh-agent -a /tmp/ssh-auth.sock'
-          rm '/home/actions-runner/.ssh/github'
-          rm '/home/actions-runner/.ssh/config'
-          rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with personal_token
         uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
