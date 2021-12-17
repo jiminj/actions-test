@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to external git pages
         # Forked version of peaceiris/actions-gh-pages, which fixes the GHES issue
-        uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
+        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -65,7 +65,7 @@ jobs:
           rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with host address
-        uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
+        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -82,8 +82,27 @@ jobs:
           rm '/home/actions-runner/.ssh/config'
           rm '/home/actions-runner/.ssh/known_hosts'
 
+      - name: Deploy to external git pages - with ssh proxy
+        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
+        continue-on-error: true
+        with:
+          allow_empty_commit: true
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          ssh_proxy: ssh_proxy
+          external_repository: github.com/jiminj/actions-test-external
+          publish_dir: ./docs
+          destination_dir: deploykey-sshproxy
+
+      - name: Cleanup ssh-agent
+        continue-on-error: true
+        run: |
+          pkill -f 'ssh-agent -a /tmp/ssh-auth.sock'
+          rm '/home/actions-runner/.ssh/github'
+          rm '/home/actions-runner/.ssh/config'
+          rm '/home/actions-runner/.ssh/known_hosts'
+
       - name: Deploy to external git pages - with https host address
-        uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
+        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -93,7 +112,7 @@ jobs:
           destination_dir: deploykey-withhttpshost
 
       - name: Deploy to external git pages - with personal_token
-        uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
+        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -103,7 +122,7 @@ jobs:
           destination_dir: deploykey-pat
 
       - name: Deploy to external git pages - with personal_token
-        uses: jiminj/actions-gh-pages@f01ce2d3d100321504cd70df7e717acdf63bf9f0
+        uses: jiminj/actions-gh-pages@68e93fe5973470f354d8b5d54fad1ab00048c996
         continue-on-error: true
         with:
           allow_empty_commit: true
