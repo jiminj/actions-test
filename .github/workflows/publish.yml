@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to external git pages
         # Forked version of peaceiris/actions-gh-pages, which fixes the GHES issue
-        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
+        uses: jiminj/actions-gh-pages@42c08c384e8da6239e5ac5322658f31813325198
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -65,7 +65,7 @@ jobs:
           rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with host address
-        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
+        uses: jiminj/actions-gh-pages@42c08c384e8da6239e5ac5322658f31813325198
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -83,13 +83,13 @@ jobs:
           rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with ssh proxy
-        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
+        uses: jiminj/actions-gh-pages@42c08c384e8da6239e5ac5322658f31813325198
         continue-on-error: true
         with:
           allow_empty_commit: true
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          ssh_proxy: ssh_proxy
-          external_repository: github.com/jiminj/actions-test-external
+          ssh_proxy: ssh.github.com:443
+          external_repository: jiminj/actions-test-external
           publish_dir: ./docs
           destination_dir: deploykey-sshproxy
 
@@ -102,7 +102,7 @@ jobs:
           rm '/home/actions-runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with https host address
-        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
+        uses: jiminj/actions-gh-pages@42c08c384e8da6239e5ac5322658f31813325198
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -112,7 +112,7 @@ jobs:
           destination_dir: deploykey-withhttpshost
 
       - name: Deploy to external git pages - with personal_token
-        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
+        uses: jiminj/actions-gh-pages@42c08c384e8da6239e5ac5322658f31813325198
         continue-on-error: true
         with:
           allow_empty_commit: true
@@ -122,7 +122,7 @@ jobs:
           destination_dir: deploykey-pat
 
       - name: Deploy to external git pages - with personal_token
-        uses: jiminj/actions-gh-pages@ffa42324754cb2d7d19e757f080711d6d5627c4c
+        uses: jiminj/actions-gh-pages@42c08c384e8da6239e5ac5322658f31813325198
         continue-on-error: true
         with:
           allow_empty_commit: true
