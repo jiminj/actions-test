@@ -60,9 +60,9 @@ jobs:
         continue-on-error: true
         run: |
           pkill -f 'ssh-agent -a /tmp/ssh-auth.sock'
-          rm '/home/actions-runner/.ssh/github'
-          rm '/home/actions-runner/.ssh/config'
-          rm '/home/actions-runner/.ssh/known_hosts'
+          rm '/home/runner/.ssh/github'
+          rm '/home/runner/.ssh/config'
+          rm '/home/runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with host address
         uses: jiminj/actions-gh-pages@v3.8.1
@@ -78,9 +78,9 @@ jobs:
         continue-on-error: true
         run: |
           pkill -f 'ssh-agent -a /tmp/ssh-auth.sock'
-          rm '/home/actions-runner/.ssh/github'
-          rm '/home/actions-runner/.ssh/config'
-          rm '/home/actions-runner/.ssh/known_hosts'
+          rm '/home/runner/.ssh/github'
+          rm '/home/runner/.ssh/config'
+          rm '/home/runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with ssh proxy
         uses: jiminj/actions-gh-pages@v3.8.1
@@ -95,15 +95,15 @@ jobs:
 
       - name: Print content
         continue-on-error: true
-        run: cat '/home/actions-runner/.ssh/config'
+        run: cat '/home/runner/.ssh/config'
 
       - name: Cleanup ssh-agent
         continue-on-error: true
         run: |
           pkill -f 'ssh-agent -a /tmp/ssh-auth.sock'
-          rm '/home/actions-runner/.ssh/github'
-          rm '/home/actions-runner/.ssh/config'
-          rm '/home/actions-runner/.ssh/known_hosts'
+          rm '/home/runner/.ssh/github'
+          rm '/home/runner/.ssh/config'
+          rm '/home/runner/.ssh/known_hosts'
 
       - name: Deploy to external git pages - with https host address
         uses: jiminj/actions-gh-pages@v3.8.1
