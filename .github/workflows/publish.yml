@@ -93,6 +93,10 @@ jobs:
           publish_dir: ./docs
           destination_dir: deploykey-sshproxy
 
+      - name: Print content
+        continue-on-error: true
+        run: cat '/home/actions-runner/.ssh/config'
+
       - name: Cleanup ssh-agent
         continue-on-error: true
         run: |
